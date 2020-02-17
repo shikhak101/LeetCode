@@ -1,6 +1,3 @@
-bool comp(string & s1, string & s2){
-    return s2>s1;
-}
 class Solution {
 public:
     string str;
@@ -27,7 +24,6 @@ public:
     }
     bool wordBreak(string s, vector<string>& wordDict) {
         str = s;
-        sort(wordDict.begin(),wordDict.end(),comp);
         v = wordDict;
         string curr = "";
         return helper(curr);
