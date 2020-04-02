@@ -1,22 +1,20 @@
 class Solution {
 public:
     bool isHappy(int n) {
-        if(n == 1) return true;
-        set<int> s;
-        s.insert(n);
-        return check(n,s);
-    }
-    bool check(int n, set<int> s) {
-        if(n == 1) return true;
-        int sumsq = 0;
-        while(n>0) {
-            int d = n%10;
-            sumsq += d*d;
-            n = n/10;
+        set<int> st;
+        int num = n;
+        while(st.find(num) == st.end()){
+            st.insert(num);
+            int temp = num;
+            int sum = 0;
+            while(temp>0){
+                int d = temp%10;
+                sum += (d*d);
+                temp = temp/10;
+            }
+            num = sum;
         }
-        if(s.find(sumsq) != s.end()) return false;
-        s.insert(sumsq);
-        return check(sumsq,s);
-        
+        if(num == 1) return true;
+        return false;
     }
 };
